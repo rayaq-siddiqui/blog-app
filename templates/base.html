@@ -1,0 +1,14 @@
+{% load static %}
+<html>
+  <head>
+    <title>Rayaq's Blog</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1><a href="{% url 'home' %}">Rayaq's Blog</a></h1>
+    </header>
+    <div>{% block content %} {% endblock content%}</div>
+  </body>
+</html>
