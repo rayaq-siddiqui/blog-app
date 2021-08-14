@@ -1,4 +1,6 @@
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from .models import Post
 
 
@@ -11,3 +13,22 @@ class BlogListView(ListView):
 class BlogDetailView(DetailView):
     model = Post
     template_name = 'post_detail.html'
+
+
+class BlogCreativeView(CreateView):
+    model = Post
+    template_name = 'post_new.html'
+    fields = ['title', 'author', 'body']
+
+
+class BlogUpdateView(UpdateView):
+    model = Post
+    template_name = 'post_edit.html'
+    fields = ['title', 'body']
+
+
+class BlogDeleteView(DeleteView):
+    model = Post
+    template_name = 'post_delete.html'
+    # just waits for all of the functionality to finish, then executes reverse
+    success_url = reverse_lazy('home')
